@@ -485,3 +485,7 @@ and objects, so parsing does not silently change its value. Python-literal sets
 and tuples containing non-finite floats also retain the complete argument as
 text, including when nested in other containers. Dictionary keys and values
 are checked recursively as well.
+
+The wizard's native Gemini adapter omits SDK-added sampling and candidate-count
+controls for `gemini-3.8-flash`, as required by Google's [migration guide](https://aistudio.google.com/docs/whats-new-gemini-3.8#migrate-to-gemini-3-8-flash).
+Other explicit model selections retain their existing request settings.

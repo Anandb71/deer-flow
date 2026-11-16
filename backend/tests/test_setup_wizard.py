@@ -35,7 +35,7 @@ class TestProviders:
         )
         model = config["models"][0]
         assert model["model"] == "gemini-3.8-flash"
-        assert model["use"] == "langchain_google_genai:ChatGoogleGenerativeAI"
+        assert model["use"] == "deerflow.models.patched_google:PatchedChatGoogleGenerativeAI"
         assert model["gemini_api_key"] == "$GEMINI_API_KEY"
         assert not {"thinking_budget", "temperature", "top_p", "top_k", "candidate_count"}.intersection(model)
 
