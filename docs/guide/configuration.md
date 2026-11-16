@@ -218,6 +218,12 @@ fences, including unclosed fences, in complete and streamed replies.
    Chat pickers support name/ID search, provider filtering, favorites and the
    eight most recently selected models, scoped to your account in this browser.
 
+   The setup wizard's native Google Gemini preset defaults to `gemini-3.8-flash`.
+   Google [announced a December 1, 2026 reroute](https://ai.google.dev/gemini-api/docs/changelog#11-02-2026)
+   from `gemini-2.5-pro` to this model. Existing YAML configurations are not
+   rewritten; review Google's [migration guide](https://aistudio.google.com/docs/whats-new-gemini-3.8#migrate-to-gemini-3-8-flash)
+   before updating a configured model or its request parameters.
+
    The OpenAI preset routes `gpt-6-astra`, `gpt-6.1-sol`, `gpt-6.1-terra`,
    `gpt-6-sol` and `gpt-6-luna` through the Responses API for tool calling,
    with model-specific thinking and reasoning-effort defaults. Flash mode

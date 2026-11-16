@@ -21,6 +21,24 @@ from wizard.writer import (
 
 
 class TestProviders:
+    def test_google_default_generates_current_model_config(self):
+        provider = next(p for p in LLM_PROVIDERS if p.name == "google")
+        config = yaml.safe_load(
+            build_minimal_config(
+                provider_use=provider.use,
+                model_name=provider.default_model,
+                display_name=provider.display_name,
+                api_key_field=provider.api_key_field,
+                env_var=provider.env_var,
+                extra_model_config=provider.extra_config,
+            )
+        )
+        model = config["models"][0]
+        assert model["model"] == "gemini-3.8-flash"
+        assert model["use"] == "langchain_google_genai:ChatGoogleGenerativeAI"
+        assert model["gemini_api_key"] == "$GEMINI_API_KEY"
+        assert not {"thinking_budget", "temperature", "top_p", "top_k", "candidate_count"}.intersection(model)
+
     def test_llm_providers_not_empty(self):
         assert len(LLM_PROVIDERS) >= 8
 
